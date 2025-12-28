@@ -16,7 +16,7 @@ export default function FilterPill({
       className={`rounded-full px-3 py-2 text-xs font-normal leading-4 transition-colors ${
         isActive
           ? "bg-secondary text-primary"
-          : "bg-secondary text-primary-muted hover:bg-secondary/50 hover:text-primary"
+          : "bg-none text-primary-muted hover:bg-secondary/80 hover:text-primary-muted"
       } ${className}`}
       {...props}
     >
