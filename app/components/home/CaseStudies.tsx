@@ -2,18 +2,18 @@ import ProjectCard from "./ProjectCard";
 
 const PROJECTS = [
   {
-    title: "Streamlining development time through design system creation",
-    subtitle: "TextLayer",
+    title: "Designing a Puzzle Management System for Crosswordr",
+    subtitle: "Crossplay Digital",
     imageSrc: "/images/rectangle17.png",
   },
   {
-    title: "Streamlining development time through design system creation",
-    subtitle: "TextLayer",
+    title: "Designing and Developing LedgerUp’s Visual Identity and Landing Page",
+    subtitle: "LedgerUp",
     imageSrc: "/images/rectangle18.png",
   },
   {
-    title: "Streamlining development time through design system creation",
-    subtitle: "TextLayer",
+    title: "Boosting User Retention Through New User Onboarding for TCS",
+    subtitle: "The Coaches Site",
     imageSrc: "/images/rectangle17.png",
   },
   {
