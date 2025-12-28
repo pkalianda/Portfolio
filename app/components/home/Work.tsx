@@ -3,36 +3,30 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ViewHorizontalIcon, ViewVerticalIcon } from "@radix-ui/react-icons";
-import ProjectCard from "./ProjectCard";
 import IconButton from "../shared/IconButton";
 import FilterPill from "../shared/FilterPill";
-
-const PROJECTS = [
-  {
-    title: "Streamlining development time through design system creation",
-    subtitle: "TextLayer",
-    imageSrc: "/images/rectangle17.png",
-  },
-  {
-    title: "Streamlining development time through design system creation",
-    subtitle: "TextLayer",
-    imageSrc: "/images/rectangle18.png",
-  },
-  {
-    title: "Streamlining development time through design system creation",
-    subtitle: "TextLayer",
-    imageSrc: "/images/rectangle17.png",
-  },
-  {
-    title: "Streamlining development time through design system creation",
-    subtitle: "TextLayer",
-    imageSrc: "/images/rectangle18.png",
-  },
-];
+import CaseStudies from "./CaseStudies";
+import StuffIBuilt from "./StuffIBuilt";
+import Writing from "./Writing";
 
 export default function Work() {
   const [activeView, setActiveView] = useState(0);
   const [activeFilter, setActiveFilter] = useState("Case studies");
+
+  const isLayoutDisabled = activeFilter !== "Case studies";
+
+  const renderContent = () => {
+    switch (activeFilter) {
+      case "Case studies":
+        return <CaseStudies activeView={activeView} />;
+      case "Stuff I built":
+        return <StuffIBuilt />;
+      case "Writing":
+        return <Writing />;
+      default:
+        return <CaseStudies activeView={activeView} />;
+    }
+  };
 
   return (
     <section className="flex w-full flex-col gap-6 max-w-[680px]" id="work">
@@ -43,15 +37,17 @@ export default function Work() {
         </h2>
         <div className="flex gap-2">
           <IconButton 
-            isActive={activeView === 0} 
+            isActive={activeView === 0 && !isLayoutDisabled} 
             onClick={() => setActiveView(0)}
+            disabled={isLayoutDisabled}
             aria-label="Grid View"
           >
             <ViewVerticalIcon width={15} height={15} />
           </IconButton>
           <IconButton 
-            isActive={activeView === 1} 
+            isActive={activeView === 1 && !isLayoutDisabled} 
             onClick={() => setActiveView(1)}
+            disabled={isLayoutDisabled}
             aria-label="List View"
           >
             <ViewHorizontalIcon width={15} height={15} />
@@ -72,17 +68,8 @@ export default function Work() {
         ))}
       </div>
 
-      {/* Project Grid */}
-      <div className={`grid gap-x-5 w-full ${activeView === 0 ? "grid-cols-2 gap-y-5" : "grid-cols-1 gap-y-10"}`}>
-        {PROJECTS.map((project, index) => (
-          <ProjectCard
-            key={index}
-            title={project.title}
-            subtitle={project.subtitle}
-            imageSrc={project.imageSrc}
-          />
-        ))}
-      </div>
+      {/* Content Area */}
+      {renderContent()}
     </section>
   );
 }
