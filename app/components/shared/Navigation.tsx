@@ -11,6 +11,7 @@ export default function Navigation() {
     if (path.includes("projects")) return "PROJECTS";
     if (path.includes("about")) return "ABOUT";
     if (path.includes("lab")) return "LAB";
+    if (path.includes("case-studies")) return "CASE STUDY";
     return "";
   };
 
