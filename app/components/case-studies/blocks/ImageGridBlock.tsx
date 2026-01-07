@@ -15,7 +15,7 @@ export default function ImageGridBlock({
     >
       {images.map((image, index) => (
         <figure key={index} className="flex flex-col gap-3">
-          <div className="w-full aspect-video rounded-[4px] overflow-hidden bg-secondary">
+          <div className="w-full aspect-video rounded-[16px] overflow-hidden bg-secondary">
             {/* Placeholder for now - will be replaced with Image component later */}
             <div className="w-full h-full flex items-center justify-center text-primary-muted text-sm">
               {image.alt}
