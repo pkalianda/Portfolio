@@ -9,3 +9,83 @@
 
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 }
+
+/* Prose styles for case study content */
+@layer base {
+  .prose {
+    @apply text-sm text-primary leading-[22px];
+  }
+
+  .prose h2 {
+    @apply text-lg font-semibold text-primary mt-8 mb-4;
+  }
+
+  .prose h3 {
+    @apply text-base font-semibold text-primary mt-6 mb-3;
+  }
+
+  .prose p {
+    @apply mb-5;
+  }
+
+  .prose p:last-child {
+    @apply mb-0;
+  }
+
+  .prose a {
+    @apply text-link underline hover:text-accent transition-colors;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply ml-5 mb-5 space-y-2;
+  }
+
+  .prose ul li {
+    @apply list-disc;
+  }
+
+  .prose ol li {
+    @apply list-decimal;
+  }
+
+  .prose strong {
+    @apply font-semibold text-primary;
+  }
+
+  .prose em {
+    @apply italic;
+  }
+}
+
+@layer base {
+  /* Prose styles for case study content */
+  .prose p {
+    @apply mb-5 last:mb-0;
+  }
+
+  .prose a {
+    @apply text-link underline hover:text-accent transition-colors;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply ml-5 mb-5 space-y-2;
+  }
+
+  .prose ul li {
+    @apply list-disc;
+  }
+
+  .prose ol li {
+    @apply list-decimal;
+  }
+
+  .prose strong {
+    @apply font-semibold;
+  }
+
+  .prose em {
+    @apply italic;
+  }
+}
