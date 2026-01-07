@@ -17,7 +17,7 @@ export const crosswordrStudy: CaseStudyData = {
     {
       type: "metadata",
       role: "Product Designer",
-      timeline: "Sep 2024 - Dec 2024",
+      timeline: "3 months",
       outcome: "50% reduction in puzzle creation time",
     },
     {
@@ -26,41 +26,52 @@ export const crosswordrStudy: CaseStudyData = {
       content: (
         <>
           <p>
-            Crosswordr is a SaaS platform that enables publishers to create,
-            manage, and distribute crossword puzzles to their audiences.
-            Publishers ranging from local newspapers to major media companies
-            rely on the platform to engage their readers with daily puzzle
-            content.
-          </p>
-          <p>
-            The existing puzzle management system had grown organically over
-            time, resulting in a fragmented workflow that required publishers to
-            navigate multiple tools and interfaces to complete routine tasks.
+          Crosswordr by Crossplay Digital is an online platform for uploading,
+           sharing, and solving crosswords. As their user base grew, the team
+           was preparing to launch a new puzzle embedding feature that would 
+           allow crosswords to be shared more widely across the web. To support
+           this, they needed to improve the platform experience. I joined as a
+           Product Designer during my final year at university, focused on
+           enhancing the product to align with the embed feature rollout.
+
+
           </p>
         </>
       ),
     },
     {
       type: "text",
-      heading: "The problem",
+      heading: "My contribution",
       content: (
         <>
           <p>
-            Publishers were reporting significant friction in their daily
-            workflow. Our research revealed that creating and publishing a
-            single puzzle required navigating between 4-5 different screens,
-            with unclear navigation paths and redundant data entry at multiple
-            steps.
+          As the sole designer, I led market research, proposed new features, 
+          designed user flows and interfaces, and collaborated with the project 
+          manager to align design with product goals.
           </p>
+
+        </>
+      ),
+    },
+    {
+      type: "text",
+      heading: "Problem",
+      content: (
+        <>
           <p>
-            Key pain points identified through user interviews included:
+          Currently, once a puzzle is uploaded to Crosswordr, users have no ability 
+          to edit, customize, or manage it. The uploaded puzzle is locked in its 
+          original state and inherits Crosswordr’s default branding and design—both 
+          on the platform and when embedded on other websites.
           </p>
-          <ul>
-            <li>No centralized view of puzzle inventory and status</li>
-            <li>Difficulty tracking which puzzles were scheduled for publication</li>
-            <li>Manual, error-prone process for setting publication dates</li>
-            <li>Limited ability to preview puzzles before publishing</li>
-          </ul>
+
+          <p>
+          This creates a disconnect for users who want their puzzles to visually align 
+          with their own websites when embedding. While full puzzle-editing features 
+          are planned for the future, there was an immediate need to give users more 
+          control over their uploaded puzzles to better support the upcoming embed feature.
+          </p>
+
         </>
       ),
     },

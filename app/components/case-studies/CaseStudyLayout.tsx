@@ -15,11 +15,11 @@ export default function CaseStudyLayout({ data }: CaseStudyLayoutProps) {
 
       <article className="w-full max-w-[680px] pt-[120px] flex flex-col gap-12">
         {/* Page Header */}
-        <header className="flex flex-col gap-2">
-          <h1 className="text-primary font-semibold text-base leading-tight">
+        <header className="flex flex-col gap-0.5">
+          <h1 className="text-primary font-medium text-base leading-tight">
             {metadata.title}
           </h1>
-          <p className="text-primary-muted font-medium text-sm">
+          <p className="text-primary-muted font-regular text-sm">
             {metadata.subtitle}
           </p>
         </header>
