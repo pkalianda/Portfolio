@@ -2,27 +2,58 @@
 
 This directory contains the case study pages system for your portfolio.
 
+## Overview
+
+The case study system uses a **block-based architecture** that separates concerns:
+
+- **Content** (`case-studies/_data/`) - Case study content as structured data
+- **Routing** (`case-studies/[slug]/`) - Dynamic routes and metadata generation
+- **Components** (`components/case-studies/`) - Reusable UI blocks and layouts
+
+This separation ensures consistency across all case studies while allowing flexible content ordering.
+
 ## File Structure
 
 ```
-case-studies/
-├── [slug]/
-│   └── page.tsx              # Dynamic route handler
-└── _data/
-    └── crosswordr.tsx        # Case study content definition
-
-components/case-studies/
-├── CaseStudyLayout.tsx       # Shared layout wrapper
-└── blocks/
-    ├── types.ts              # TypeScript types
-    ├── BlockRenderer.tsx     # Renders blocks based on type
-    ├── HeroBlock.tsx         # Large hero image
-    ├── MetadataBlock.tsx     # 3-column metadata
-    ├── TextBlock.tsx         # Text content with optional heading
-    ├── ImageBlock.tsx        # Single image with caption
-    ├── ImageGridBlock.tsx    # 2 or 3 column image grid
-    └── DividerBlock.tsx      # Horizontal divider
+app/
+├── case-studies/
+│   ├── [slug]/
+│   │   └── page.tsx          # Dynamic route handler + SEO metadata
+│   ├── _data/
+│   │   └── crosswordr.tsx    # Case study content definition
+│   └── README.md             # This file
+│
+└── components/
+    └── case-studies/
+        ├── CaseStudyLayout.tsx   # Shared layout wrapper
+        └── blocks/
+            ├── types.ts          # TypeScript type definitions
+            ├── BlockRenderer.tsx # Maps block types to components
+            ├── HeroBlock.tsx     # 16:9 hero image
+            ├── MetadataBlock.tsx # 3-column metadata grid
+            ├── TextBlock.tsx     # Rich text with optional heading
+            ├── ImageBlock.tsx    # Single image with caption
+            ├── ImageGridBlock.tsx# 2 or 3 column grid
+            └── DividerBlock.tsx  # Section divider
 ```
+
+### Why This Structure?
+
+- **Content in `_data/`**: Easy to edit without touching components
+- **Routing in `[slug]/`**: Centralized route and metadata management
+- **Components in `components/`**: Consistent with existing folder structure (`home/`, `shared/`)
+- **Separation of concerns**: Change styling globally without touching content
+
+## Quick Reference
+
+| Task | File(s) to Edit |
+|------|----------------|
+| Add new case study | 1. Create `_data/newname.tsx`<br>2. Register in `[slug]/page.tsx` |
+| Change content | Edit existing file in `_data/` |
+| Modify block styling | Edit component in `components/case-studies/blocks/` |
+| Change layout/spacing | Edit `components/case-studies/CaseStudyLayout.tsx` |
+| Add new block type | 1. Add type to `blocks/types.ts`<br>2. Create component<br>3. Add to `BlockRenderer.tsx` |
+| Update typography | Edit prose styles in `app/globals.css` |
 
 ## How to Add a New Case Study
 
@@ -161,27 +192,160 @@ Your case study will be available at `/case-studies/ledgerup`
 
 ## Adding Real Images
 
-Currently, all images are placeholder containers. To add real images:
+Currently, all image blocks render placeholder containers. To add real images:
 
-1. Replace the placeholder `<div>` in each block component with Next.js `<Image>`
-2. Example for `ImageBlock.tsx`:
+### Location of Image Components
+
+All image components are in `app/components/case-studies/blocks/`:
+- `HeroBlock.tsx` - Hero image at top of case study
+- `ImageBlock.tsx` - Single image with optional caption
+- `ImageGridBlock.tsx` - Multi-column image grid
+
+### How to Add Real Images
+
+1. Open the relevant block component (e.g., `app/components/case-studies/blocks/ImageBlock.tsx`)
+2. Import Next.js Image component at the top
+3. Replace the placeholder `<div>` with `<Image>`
+
+**Example for `ImageBlock.tsx`:**
 
 ```tsx
 import Image from "next/image";
 
-// Replace the placeholder div with:
-<Image
-  src={src}
-  alt={alt}
-  fill
-  className="object-cover object-center"
-/>
+export default function ImageBlock({ src, alt, caption }: ImageBlockProps) {
+  return (
+    <figure className="flex flex-col gap-3">
+      <div className="w-full aspect-video rounded-[4px] overflow-hidden bg-secondary">
+        {/* Replace this entire div with: */}
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover object-center"
+        />
+      </div>
+      {caption && (
+        <figcaption className="text-primary-muted text-xs">{caption}</figcaption>
+      )}
+    </figure>
+  );
+}
 ```
+
+**Repeat for `HeroBlock.tsx` and `ImageGridBlock.tsx` with similar changes.**
+
+## Customizing Block Styling
+
+All block components are in `app/components/case-studies/blocks/`. Each is a simple React component using Tailwind classes.
+
+### Example: Adjusting Text Block Spacing
+
+Open `app/components/case-studies/blocks/TextBlock.tsx`:
+
+```tsx
+export default function TextBlock({ heading, content, id }: TextBlockProps) {
+  return (
+    <div className="flex flex-col gap-4" id={id}>  {/* Change gap-4 to gap-6 */}
+      {heading && (
+        <h2 className="text-primary text-base font-semibold">{heading}</h2>
+      )}
+      <div className="prose">{content}</div>
+    </div>
+  );
+}
+```
+
+**Changes apply to all case studies automatically** since they all use the same components.
+
+### Example: Changing Metadata Layout
+
+Open `app/components/case-studies/blocks/MetadataBlock.tsx` and adjust the grid:
+
+```tsx
+<div className="grid grid-cols-3 gap-6 py-8 border-y border-secondary">
+  {/* Change to grid-cols-2, adjust gap, remove borders, etc. */}
+</div>
+```
+
+### Adding a New Block Type
+
+1. **Define the type** in `blocks/types.ts`:
+```tsx
+export type ContentBlock =
+  | { type: "quote"; text: string; author: string }  // Add new type
+  | { type: "hero"; src: string; alt: string }
+  // ... existing types
+```
+
+2. **Create component** `blocks/QuoteBlock.tsx`:
+```tsx
+interface QuoteBlockProps {
+  text: string;
+  author: string;
+}
+
+export default function QuoteBlock({ text, author }: QuoteBlockProps) {
+  return (
+    <blockquote className="border-l-4 border-accent pl-6 italic">
+      <p className="text-lg text-primary">{text}</p>
+      <cite className="text-sm text-primary-muted">— {author}</cite>
+    </blockquote>
+  );
+}
+```
+
+3. **Register in BlockRenderer** (`blocks/BlockRenderer.tsx`):
+```tsx
+import QuoteBlock from "./QuoteBlock";
+
+export default function BlockRenderer({ block }: BlockRendererProps) {
+  switch (block.type) {
+    case "quote":
+      return <QuoteBlock text={block.text} author={block.author} />;
+    // ... existing cases
+  }
+}
+```
+
+4. **Use in content** (`_data/yourStudy.tsx`):
+```tsx
+{
+  type: "quote",
+  text: "Design is not just what it looks like...",
+  author: "Steve Jobs",
+}
+```
+
+## Troubleshooting
+
+### Case study not appearing
+- ✓ Check that you imported the study in `[slug]/page.tsx`
+- ✓ Check that you added it to the `CASE_STUDIES` object
+- ✓ Check that the slug matches between the data file and CASE_STUDIES key
+- ✓ Restart dev server (`npm run dev`)
+
+### TypeScript errors
+- ✓ Ensure content blocks match types defined in `blocks/types.ts`
+- ✓ Check that all required fields are included (type, src, alt, etc.)
+- ✓ Verify imports use correct paths with `@/app/components/case-studies/`
+
+### Styling not applying
+- ✓ Check that Tailwind classes are spelled correctly
+- ✓ Verify prose styles exist in `app/globals.css`
+- ✓ Ensure no typos in className props
+
+### Build errors
+- Run `npm run build` to see specific errors
+- Check console for missing imports or type mismatches
+- Verify all files are saved
 
 ## Future Enhancements
 
-- Click to enlarge images (lightbox)
-- Animations on scroll
+- Click to enlarge images (lightbox modal)
+- Animations on scroll (using Framer Motion)
 - Progress indicator for long case studies
-- Social sharing metadata
+- Social sharing metadata (Open Graph tags)
+- Table of Contents for navigation
+- Dark mode support
+- Print-friendly styles
 
