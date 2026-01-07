@@ -1,4 +1,4 @@
-import { CaseStudyData } from "../_components/blocks/types";
+import { CaseStudyData } from "@/app/components/case-studies/blocks/types";
 
 export const crosswordrStudy: CaseStudyData = {
   metadata: {

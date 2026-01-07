@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import CaseStudyLayout from "../_components/CaseStudyLayout";
+import CaseStudyLayout from "@/app/components/case-studies/CaseStudyLayout";
 import { crosswordrStudy } from "../_data/crosswordr";
 import type { Metadata } from "next";
 

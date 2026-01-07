@@ -1,5 +1,5 @@
 import { CaseStudyData } from "./blocks/types";
-import Navigation from "@/app/components/shared/Navigation";
+import Navigation from "../shared/Navigation";
 import BlockRenderer from "./blocks/BlockRenderer";
 
 interface CaseStudyLayoutProps {

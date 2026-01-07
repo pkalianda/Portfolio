@@ -8,19 +8,20 @@ This directory contains the case study pages system for your portfolio.
 case-studies/
 ├── [slug]/
 │   └── page.tsx              # Dynamic route handler
-├── _components/
-│   ├── CaseStudyLayout.tsx   # Shared layout wrapper
-│   └── blocks/
-│       ├── types.ts          # TypeScript types
-│       ├── BlockRenderer.tsx # Renders blocks based on type
-│       ├── HeroBlock.tsx     # Large hero image
-│       ├── MetadataBlock.tsx # 3-column metadata
-│       ├── TextBlock.tsx     # Text content with optional heading
-│       ├── ImageBlock.tsx    # Single image with caption
-│       ├── ImageGridBlock.tsx# 2 or 3 column image grid
-│       └── DividerBlock.tsx  # Horizontal divider
 └── _data/
     └── crosswordr.tsx        # Case study content definition
+
+components/case-studies/
+├── CaseStudyLayout.tsx       # Shared layout wrapper
+└── blocks/
+    ├── types.ts              # TypeScript types
+    ├── BlockRenderer.tsx     # Renders blocks based on type
+    ├── HeroBlock.tsx         # Large hero image
+    ├── MetadataBlock.tsx     # 3-column metadata
+    ├── TextBlock.tsx         # Text content with optional heading
+    ├── ImageBlock.tsx        # Single image with caption
+    ├── ImageGridBlock.tsx    # 2 or 3 column image grid
+    └── DividerBlock.tsx      # Horizontal divider
 ```
 
 ## How to Add a New Case Study
@@ -30,7 +31,7 @@ case-studies/
 Create a new file in `_data/` (e.g., `ledgerup.tsx`):
 
 ```tsx
-import { CaseStudyData } from "../_components/blocks/types";
+import { CaseStudyData } from "@/app/components/case-studies/blocks/types";
 
 export const ledgerupStudy: CaseStudyData = {
   metadata: {
