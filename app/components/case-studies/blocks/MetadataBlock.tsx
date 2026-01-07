@@ -10,18 +10,18 @@ export default function MetadataBlock({
   outcome,
 }: MetadataBlockProps) {
   return (
-    <div className="grid grid-cols-3 gap-6 py-8 border-y border-secondary">
-      <div className="flex flex-col gap-2">
-        <h3 className="text-primary-muted text-sm font-medium">Role</h3>
-        <p className="text-primary text-sm">{role}</p>
+    <div className="flex flex-col">
+      <div className="flex justify-between items-center py-6 border-b border-secondary">
+        <h3 className="text-primary-muted text-sm">Role</h3>
+        <p className="text-primary text-sm text-right">{role}</p>
       </div>
-      <div className="flex flex-col gap-2">
-        <h3 className="text-primary-muted text-sm font-medium">Timeline</h3>
-        <p className="text-primary text-sm">{timeline}</p>
+      <div className="flex justify-between items-center py-6 border-b border-secondary">
+        <h3 className="text-primary-muted text-sm">Timeline</h3>
+        <p className="text-primary text-sm text-right">{timeline}</p>
       </div>
-      <div className="flex flex-col gap-2">
-        <h3 className="text-primary-muted text-sm font-medium">Outcome</h3>
-        <p className="text-primary text-sm">{outcome}</p>
+      <div className="flex justify-between items-center py-6 border-b border-secondary">
+        <h3 className="text-primary-muted text-sm">Outcome</h3>
+        <p className="text-primary text-sm text-right">{outcome}</p>
       </div>
     </div>
   );
