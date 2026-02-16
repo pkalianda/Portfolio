@@ -27,13 +27,9 @@ const PROJECTS = [
   },
 ];
 
-interface CaseStudiesProps {
-  activeView: number;
-}
-
-export default function CaseStudies({ activeView }: CaseStudiesProps) {
+export default function CaseStudies() {
   return (
-    <div className={`grid gap-x-5 w-full ${activeView === 0 ? "grid-cols-2 gap-y-5" : "grid-cols-1 gap-y-10"}`}>
+    <div className="grid grid-cols-1 gap-y-5 w-full">
       {PROJECTS.map((project, index) => (
         <ProjectCard
           key={index}

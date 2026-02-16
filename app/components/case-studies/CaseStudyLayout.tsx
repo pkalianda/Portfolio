@@ -1,5 +1,4 @@
 import { CaseStudyData } from "./blocks/types";
-import Navigation from "../shared/Navigation";
 import BlockRenderer from "./blocks/BlockRenderer";
 
 interface CaseStudyLayoutProps {
@@ -11,8 +10,6 @@ export default function CaseStudyLayout({ data }: CaseStudyLayoutProps) {
 
   return (
     <main className="relative flex min-h-screen flex-col items-center pb-[80px] bg-white">
-      <Navigation />
-
       <article className="w-full max-w-[680px] pt-[120px] flex flex-col gap-12">
         {/* Page Header */}
         <header className="flex flex-col gap-0.5">
