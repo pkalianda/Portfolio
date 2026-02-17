@@ -8,6 +8,13 @@
   --color-link: #3b82f6;
 
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  --animate-blink: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* Prose styles for case study content */
