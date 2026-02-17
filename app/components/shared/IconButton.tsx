@@ -15,7 +15,7 @@ export default function IconButton({
   return (
     <button
       disabled={disabled}
-      className={`flex items-center justify-center p-1.5 rounded-md transition-colors ${
+      className={`flex items-center justify-center p-1.5 rounded-md transition-colors active:scale-[0.95] ${
         disabled
           ? "opacity-30 cursor-not-allowed text-primary-muted"
           : isActive 

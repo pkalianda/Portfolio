@@ -22,7 +22,7 @@ export default function Hero() {
             I excel in lean and agile teams at the intersection of AI and SaaS.
             I also love working with friends to design and build solutions to
             problems we come across. Currently, we&apos;re building{" "}
-            <ExternalLink href="https://glide.fit">Glide.fit</ExternalLink>
+            <ExternalLink href="https://www.getglide.fit/">Glide.fit</ExternalLink>
           </p>
           <p className="leading-[22px]">
             I spend most of my free time playing football, going on runs, and
