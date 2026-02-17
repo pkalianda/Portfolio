@@ -1,12 +1,13 @@
 import Image from "next/image";
 import ExternalLink from "../shared/ExternalLink";
+import InteractiveName from "./InteractiveName";
 
 export default function Hero() {
   return (
     <section className="flex w-full flex-col gap-6 max-w-[680px]">
       {/* Header */}
       <div className="flex flex-col gap-0.5 text-sm leading-5">
-        <h1 className="text-primary font-semibold">Prayag Kalianda</h1>
+        <InteractiveName />
         <p className="text-primary-muted font-medium">Vancouver, BC</p>
       </div>
 
