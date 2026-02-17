@@ -10,7 +10,8 @@ export default function CaseStudyLayout({ data }: CaseStudyLayoutProps) {
 
   return (
     <main className="relative flex min-h-screen flex-col items-center pb-[80px] bg-white">
-      <article className="w-full max-w-[680px] pt-[120px] flex flex-col gap-12">
+      <div className="pointer-events-none fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-white to-transparent z-10" />
+      <article className="w-full max-w-[550px] pt-[80px] flex flex-col gap-12">
         {/* Page Header */}
         <header className="flex flex-col gap-0.5">
           <h1 className="text-primary font-medium text-base leading-tight">
