@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Manrope, Reenie_Beanie } from "next/font/google";
 import { Agentation } from "agentation";
 import "./globals.css";
 
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
+});
+
+const reenieBeanie = Reenie_Beanie({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-reenie-beanie",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} font-sans antialiased`}>
+      <body className={`${manrope.variable} ${reenieBeanie.variable} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
