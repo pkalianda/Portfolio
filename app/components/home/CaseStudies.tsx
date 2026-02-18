@@ -20,7 +20,7 @@ const PROJECTS = [
     title: "Boosting User Retention Through New User Onboarding for TCS",
     subtitle: "The Coaches Site",
     description: "Redesigned the onboarding experience to reduce drop-off and improve first-week engagement for new coaching subscribers.",
-    imageSrc: "/images/rectangle17.png",
+    imageSrc: "/images/tcs-cover.png",
   },
   {
     slug: "textlayer",
